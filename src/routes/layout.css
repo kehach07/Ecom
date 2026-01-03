@@ -1,0 +1,189 @@
+/* =========================================================
+   TAILWIND DIRECTIVES (MUST BE FIRST)
+========================================================= */
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================================================
+   CSS VARIABLES (DESIGN TOKENS)
+========================================================= */
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 12%;
+
+    --card: 0 0% 100%;
+    --primary: 199 89% 48%;
+    --secondary: 210 20% 96%;
+    --muted: 210 15% 94%;
+    --accent: 25 95% 53%;
+
+    --border: 210 20% 90%;
+    --radius: 0.75rem;
+    --footer: 215 30% 10%;
+    --footer-foreground: 210 20% 92%;
+  }
+
+  .dark {
+    --background: 215 25% 8%;
+    --foreground: 210 20% 98%;
+    --card: 215 25% 12%;
+    --border: 215 25% 20%;
+  }
+}
+
+/* =========================================================
+   GLOBAL BASE STYLES (NO @apply WITH CUSTOM COLORS)
+========================================================= */
+@layer base {
+  * {
+    border-color: hsl(var(--border)); /* ✅ FIXED */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 600;
+  }
+}
+
+/* =========================================================
+   COMPONENT CLASSES
+========================================================= */
+@layer components {
+  .container-main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 80rem; /* 1280px */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-main {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-main {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    background-color: hsl(var(--primary));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+
+  .card-product {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.25s ease;
+  }
+
+  .card-product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .social-btn {
+    padding: 0.5rem;           /* ✅ p-2 instead of p-2.5 */
+    border-radius: 9999px;
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+    transition: all 0.3s ease;
+  }
+
+  .social-btn:hover {
+    background-color: hsl(var(--primary));
+    color: white;
+  }
+}
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+@layer utilities {
+  .font-display {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
