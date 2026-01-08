@@ -1,28 +1,34 @@
-import { API_BASE_URL } from "$lib/config";
+import { get } from "svelte/store";
 import { authStore } from "$lib/stores/auth";
+import { API_BASE_URL } from "$lib/config";
 
 export async function apiFetch(
   endpoint: string,
   options: RequestInit = {}
 ) {
-  let token: string | null = null;
-
-  authStore.subscribe((v: { accessToken: string | null; }) => token = v.accessToken)();
+  const { accessToken, user } = get(authStore);
 
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...options.headers,
+
+      // ✅ REQUIRED BY YOUR SESSION MIDDLEWARE
+      ...(user?.id ? { "X-User-ID": String(user.id) } : {}),
+
+      // optional JWT
+      ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
+
+      ...(options.headers || {}),
     },
     credentials: "include",
   });
 
-  if (res.status === 401) {
-    authStore.logout();
-    throw new Error("Unauthorized");
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(data?.error || "Request failed");
   }
 
-  return res.json();
+  return data;
 }

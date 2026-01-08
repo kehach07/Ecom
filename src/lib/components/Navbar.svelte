@@ -1,5 +1,6 @@
 <script>
   import CategoryScroller from "./CategoryScroller.svelte";
+   export let onAuthClick = () => {};
 </script>
 
 <nav class="w-full bg-white border-b">
@@ -46,8 +47,8 @@
         <button class="text-gray-600 hover:text-blue-600 transition">🛒</button>
 
         <button
-          class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm
-                 hover:bg-blue-700 transition"
+          on:click={onAuthClick}
+          class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700"
         >
           Sign In
         </button>

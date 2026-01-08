@@ -27,18 +27,7 @@
   {/if}
 
   <!-- Wishlist -->
- <button
-  class="absolute top-3 right-3 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm
-         hover:bg-card transition"
-  aria-label="Add to wishlist"
-  on:click={() => (liked = !liked)}
->
-  <Heart
-    class={`h-4 w-4 transition ${
-      liked ? "fill-current text-destructive" : "text-muted-foreground"
-    }`}
-  />
-</button>
+
   <!-- Image -->
   <div class="aspect-square mb-3 rounded-lg bg-secondary/30 overflow-hidden">
     <img
