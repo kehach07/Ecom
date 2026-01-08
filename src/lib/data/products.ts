@@ -33,7 +33,7 @@ export const products: Product[] = [
       "Built-in voice assistant support"
     ],
     inStock: true,
-    badge: "25% OFF"
+    // badge: "25% OFF"
   },
   {
     id: "2",
@@ -54,7 +54,7 @@ export const products: Product[] = [
       "Voice control compatible"
     ],
     inStock: true,
-    badge: "BEST SELLER"
+    // badge: "BEST SELLER"
   },
   {
     id: "3",
@@ -75,7 +75,7 @@ export const products: Product[] = [
       "RGB ambient lighting"
     ],
     inStock: true,
-    badge: "NEW"
+    // badge: "NEW"
   },
   {
     id: "4",
@@ -115,7 +115,7 @@ export const products: Product[] = [
       "Slim bezel design"
     ],
     inStock: true,
-    badge: "HOT DEAL"
+    // badge: "HOT DEAL"
   },
   {
     id: "6",
@@ -155,7 +155,7 @@ export const products: Product[] = [
       "5G connectivity"
     ],
     inStock: true,
-    badge: "15% OFF"
+    // badge: "15% OFF"
   },
   {
     id: "8",
@@ -176,7 +176,7 @@ export const products: Product[] = [
       "All-day battery life (12+ hours)"
     ],
     inStock: true,
-    badge: "NEW ARRIVAL"
+    // badge: "NEW ARRIVAL"
   }
 ];
 
